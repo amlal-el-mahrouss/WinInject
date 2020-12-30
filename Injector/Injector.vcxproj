@@ -150,10 +150,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="manualmap.cpp" />
+    <ClCompile Include="core.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="manualmap.h" />
+    <ClInclude Include="core.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

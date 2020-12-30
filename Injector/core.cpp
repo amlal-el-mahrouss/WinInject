@@ -1,4 +1,4 @@
-#include "manualmap.h"
+#include "core.h"
 /*
 Manually Map your DLL
 Do not use public downloads and source codes
@@ -39,6 +39,7 @@ DWORD CLibraryLoader::ReturnProcId(std::string processName)
 	return 0;
 }
 
+/*
 bool WINAPI CLibraryLoader::LoadLib(HANDLE hProc, std::string dllPath)
 {
 	std::unique_ptr<BYTE> pSrcData;
@@ -105,3 +106,4 @@ bool WINAPI CLibraryLoader::LoadLib(HANDLE hProc, std::string dllPath)
 #endif
 
 }
+*/
