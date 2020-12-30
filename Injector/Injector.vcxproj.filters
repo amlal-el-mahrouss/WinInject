@@ -11,13 +11,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="manualmap.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="manualmap.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>source</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="includes.h">
-      <Filter>headers</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
