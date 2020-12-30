@@ -19,7 +19,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core.h">
+    <ClInclude Include="core.hpp">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
