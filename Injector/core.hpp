@@ -1,36 +1,46 @@
 #pragma once
 
-#include <Windows.h>
-#include <TlHelp32.h>
-#include <iostream>
-#include <fstream>
-#include <functional>
-#include <string>
+#include "def.hpp"
+#define WIN32_LEAN_AND_MEAN
+
+
 
 /*
+* type: struct
+* name: LoadLibraryC
 * Made by: \mfw
 * Purpose: Loads the library using the manual mapping technique
 */
 struct LoadLibraryC 
 {
-	static DWORD ReturnProcId(std::string processName);
-	static bool WINAPI LoadLibCustom(HANDLE hProc, std::string dllPath);
+public:
+	static std::uint32_t ReturnProcId(std::string processName);
+	static bool WINAPI LoadLibC(HANDLE hProc, std::string dllPath);
+
+private:
+	std::unique_ptr<Byte> m_pSourceData;
+	IMAGE_NT_HEADERS* pOldNtHeader = nullptr;
+	IMAGE_OPTIONAL_HEADER* pOldOptionalHeader = nullptr;
+	IMAGE_FILE_HEADER* pOldFileHeader = nullptr;
+	BYTE* pTargetBase = nullptr;
+
 };
 
 /*
 * Made by: \mfw
+* name: CHandleWrap
 * Purpose: handles the processes snapshot
 */
-class CHandleWrap
+class CHandle
 {
 public:
-	CHandleWrap() = delete;
+	CHandle() = delete;
 
-	CHandleWrap(HANDLE handle)
+	CHandle(HANDLE handle)
 		: m_hHandle(handle)
 	{}
 
-	~CHandleWrap() noexcept
+	~CHandle() noexcept
 	{
 		if (m_hHandle)
 			CloseHandle(m_hHandle);
@@ -45,12 +55,6 @@ public:
 	void ProcSnapshot()
 	{
 		m_hHandle = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-	}
-
-	template <typename T>
-	void Set(std::function<T> func)
-	{
-		m_hHandle = func();
 	}
 
 	HANDLE Get() noexcept
